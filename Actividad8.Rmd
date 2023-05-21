@@ -1,0 +1,38 @@
+---
+title: "Actividad_8"
+author: "Sergio Pirez"
+date: "5/21/2023"
+output: html_document
+---
+
+```{r,ECHO=TRUE}
+
+library(tidyverse)
+library(magrittr)
+
+mpg<-mpg
+
+
+mpg_0<-mpg%>%filter(year=="2008", hwy>31)%>%count()
+
+mpg_1<-mpg%>%dplyr::filter(cty==9 | hwy > 90)%>%count()
+
+
+mpg_2<- mpg%>%select(dspl,hwy)
+
+
+#4)
+
+mpg_4<- mpg%>%select(trans,drv, cty, hwy)
+
+#5)
+
+mpg_5<-mpg%>% select(manufacturer,model,year,cyl,cty)%>%
+  filter(manufacturer=="toyota", model=="camry")
+
+as.data.frame(mpg_5)
+
+
+mpg_9<-mpg%>%group_by(manufacturer)%>%summarise(ren_prom=mean(cty),mejor=max(cty),peor=min(cty))
+  ```
+
